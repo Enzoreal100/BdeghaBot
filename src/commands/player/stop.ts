@@ -2,6 +2,7 @@ import { getVoiceConnection } from "@discordjs/voice";
 import { ChatInputCommandInteraction, Client, ConnectionService, SlashCommandBuilder } from "discord.js";
 import { formatMessage } from "../../auxiliaries/message";
 import { Etypes } from "../../constraints/Emessages";
+import { distube } from "../..";
 
 export const data = new SlashCommandBuilder()
   .setName("parar")
@@ -11,13 +12,43 @@ export async function execute(
   client: Client,
   interaction: ChatInputCommandInteraction
 ) {
+  const member = interaction.guild?.members.cache.get(interaction.user.id);
+  const voiceChannel = member?.voice.channel;
   const connection = getVoiceConnection(interaction.guildId!);
-  if (connection) {
-    connection.destroy();
-    await interaction.reply(formatMessage({
-      type: Etypes.SUCCESS,
-      content: "Música parada!"
-    }));
+
+
+  await interaction.deferReply();
+
+  if(!voiceChannel) {
+    return interaction.editReply(
+      formatMessage(
+        {
+          type: Etypes.ERROR,
+          content: "Você precisa estar em um canal de voz para tocar músicas!"
+        }
+      )
+    );
   }
-  
+
+  const queue = distube.getQueue(voiceChannel);
+  if(!queue || !queue.playing) {
+    return interaction.editReply(
+      formatMessage(
+        {
+          type: Etypes.ERROR,
+          content: "Não há músicas tocando!"
+        }
+      )
+    );
+  }
+
+  queue.stop();
+  return interaction.editReply(
+    formatMessage(
+      {
+        type: Etypes.SUCCESS,
+        content: "Música parada!"
+      }
+    )
+  );  
 }

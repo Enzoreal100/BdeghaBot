@@ -1,20 +1,23 @@
 import dotenv from 'dotenv';
-import { Client, IntentsBitField, Partials } from 'discord.js';
+import { Client, IntentsBitField, Partials, GatewayIntentBits } from 'discord.js';
 import eventHandler from './handlers/eventHandler';
-import ffmpeg from 'ffmpeg-static';
-// import { setFfmpegPath } from 'ytdl-core/lib/utils';
-import ytdl from 'ytdl-core';
-
+import DisTube from 'distube';
+import { YtDlpPlugin } from '@distube/yt-dlp';
+import { YouTubePlugin } from '@distube/youtube';
 
 dotenv.config();
 
 const client: Client = new Client({
   intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildVoiceStates,
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMembers,
     IntentsBitField.Flags.GuildMessages,
     IntentsBitField.Flags.MessageContent,
-    IntentsBitField.Flags.GuildMessageReactions
+    IntentsBitField.Flags.GuildMessageReactions,
   ],
   partials: [
     Partials.Channel,
@@ -23,6 +26,16 @@ const client: Client = new Client({
     Partials.User
   ],
 });
+
+export const distube = new DisTube(client, 
+  {
+    emitNewSongOnly: true,
+    emitAddSongWhenCreatingQueue: false,
+    plugins: [
+        new YouTubePlugin()
+    ],
+  }
+);
 
 (async () => {
   try {
