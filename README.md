@@ -5,8 +5,11 @@ A Discord music bot built with Discord.js v14 and TypeScript.
 A shoutout to Louis, that made this template/framework, which made my development much more easy!
 
 You can check his github and youtube here:
+
 Louis' Github: https://github.com/nullpointerexceptionkek
+
 Louis' Youtube channel: https://www.youtube.com/@getinstance
+
 Louis' website: https://louisli.dev/
 
 ## Features
