@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 import { Client, IntentsBitField, Partials, GatewayIntentBits } from 'discord.js';
 import eventHandler from './handlers/eventHandler';
 import DisTube from 'distube';
-import { YtDlpPlugin } from '@distube/yt-dlp';
 import { YouTubePlugin } from '@distube/youtube';
 
 dotenv.config();
