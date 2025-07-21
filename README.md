@@ -2,7 +2,7 @@
 
 A Discord music bot built with Discord.js v14 and TypeScript.
 
-A shoutout to Louis, that made this template/framework, which made my development much more easy!
+A shoutout to Louis Li, that made this template/framework, which made my development much more easy!
 
 You can check his github and youtube here:
 
