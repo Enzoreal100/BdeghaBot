@@ -97,6 +97,7 @@ Louis' website: https://louisli.dev/
 - [DisTube](https://distube.js.org/) - Library for music playback
 - [dotenv](https://www.npmjs.com/package/dotenv) - Environment variable loading
 - [TypeScript](https://www.typescriptlang.org/) - Typed programming language
+- [Discord.js TypeScript Bot Template](https://github.com/nullpointerexceptionkek/Discord.js-TypeScript-Bot-Template) - Template used in the code
 
 ## License
 
