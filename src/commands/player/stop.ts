@@ -43,6 +43,7 @@ export async function execute(
   }
 
   queue.stop();
+  distube.voices.leave(voiceChannel);  
   return interaction.editReply(
     formatMessage(
       {
@@ -50,5 +51,6 @@ export async function execute(
         content: "Música parada!"
       }
     )
-  );  
+  );
+ 
 }
