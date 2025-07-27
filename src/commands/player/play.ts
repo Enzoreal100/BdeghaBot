@@ -3,6 +3,8 @@ import { formatMessage } from "../../auxiliaries/message";
 import { Etypes } from "../../constraints/Emessages";
 import ytdl from "ytdl-core";
 import { distube } from "../..";
+import { Queue } from "distube";
+import { handleQueue } from "../utility/handleQueue";
 
 export const data = new SlashCommandBuilder()
   .setName("tocar")
@@ -28,7 +30,6 @@ export async function execute(
   const member = interaction.guild?.members.cache.get(interaction.user.id);
   const music = interaction.options.getString("musica");
   const voiceChannel = member?.voice.channel as VoiceChannel;
-  
 
   await interaction.deferReply();
   if (!voiceChannel) {
@@ -56,13 +57,18 @@ export async function execute(
     return;
   }
 
+  console.log(`Música adicionada: ${music}`);
+
   await distube.play(voiceChannel, music!);
+  const queue = distube.getQueue(voiceChannel);
   interaction.editReply(
     formatMessage(
       {
         type: Etypes.SUCCESS,
-        content: "Música tocando!"
+        content: "Música tocando!" + music
       }
     )
   );
+  handleQueue(interaction, queue!);
+  return;
 }
