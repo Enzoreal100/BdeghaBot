@@ -66,10 +66,10 @@ export async function execute(
     formatMessage(
       {
         type: Etypes.SUCCESS,
-        content: "Música tocando!" + music
+        content: "Música tocando!\n" + music
       }
     )
   );
-  handleQueue(interaction, queue!);
+  handleQueue(interaction, queue);
   return;
 }

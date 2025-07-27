@@ -24,7 +24,7 @@ export async function execute(
       formatMessage(
         {
           type: Etypes.ERROR,
-          content: "Você precisa estar em um canal de voz para tocar músicas!"
+          content: "Você precisa estar em um canal de voz para parar o bot!"
         }
       )
     );
