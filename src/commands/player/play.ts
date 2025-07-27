@@ -4,7 +4,8 @@ import { Etypes } from "../../constraints/Emessages";
 import ytdl from "ytdl-core";
 import { distube } from "../..";
 import { Queue } from "distube";
-import { handleQueue } from "../utility/handleQueue";
+import { handleQueue } from "../../auxiliaries/handleQueue";
+
 
 export const data = new SlashCommandBuilder()
   .setName("tocar")
