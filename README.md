@@ -14,7 +14,11 @@ Louis' website: https://louisli.dev/
 
 ## Features
 
-- **Music Commands**: Play YouTube music in voice channels
+- **Music Playback**: Play YouTube music in voice channels with automatic queue management
+- **Queue System**: Automatic queue creation and management for multiple songs
+- **Music Controls**: Play, stop, skip, pause/resume functionality
+- **Queue Display**: View current music queue with song information
+- **Multi-Server Support**: Works independently across multiple Discord servers
 - **Slash Commands**: Modern interface using Discord slash commands
 - **TypeScript**: Fully typed code for better development
 - **Event System**: Automatic event loading with execution order
@@ -66,8 +70,14 @@ Louis' website: https://louisli.dev/
 
 ## Commands
 
-- `/tocar [url]` - Play a YouTube music
-- `/parar` - Stop the current playback
+### Music Commands
+- `/tocar [url]` - Play a YouTube music (adds to queue if music is already playing)
+- `/parar` - Stop the current playback and disconnect from voice channel
+- `/pular` - Skip the current song
+- `/pause` - Pause/resume the current song
+- `/fila` - Show the current music queue
+
+### Utility Commands
 - `/ping` - Check if the bot is online
 
 ## Project Structure
