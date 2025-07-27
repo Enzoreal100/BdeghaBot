@@ -2,7 +2,7 @@ import { ChatInputCommandInteraction, Client, SlashCommandBuilder } from "discor
 import { distube } from "../..";
 import { formatMessage } from "../../auxiliaries/message";
 import { Etypes } from "../../constraints/Emessages";
-import { handleQueue } from "../utility/handleQueue";
+import { handleQueue } from "../../auxiliaries/handleQueue";
 
 export const data = new SlashCommandBuilder()
   .setName("fila")
