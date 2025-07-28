@@ -31,7 +31,15 @@ export const distube = new DisTube(client,
     emitNewSongOnly: true,
     emitAddSongWhenCreatingQueue: false,
     plugins: [
-        new YouTubePlugin()
+        new YouTubePlugin({
+          cookies: [
+            {
+              name: 'CONSENT',
+              value: 'YES+cb.20210328-17-p0.en+FX+{consent_id}',
+              domain: '.youtube.com'
+            }
+          ]
+        })
     ],
   }
 );
@@ -44,7 +52,5 @@ export const distube = new DisTube(client,
     console.error(`Error: ${error}`);
   }
 })();
-
-console.log(process.env.FFMPEG_PATH);
 
 
